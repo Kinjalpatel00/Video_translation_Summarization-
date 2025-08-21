@@ -15,7 +15,7 @@ from gtts import gTTS
 import cv2
 import pytesseract
 from pydub import AudioSegment
-from pydub.utils import which
+from pydub.utils import which 
 
 app = Flask(__name__)
 app.secret_key = 'sqrt1234'
