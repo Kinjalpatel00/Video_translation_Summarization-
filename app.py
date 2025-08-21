@@ -40,6 +40,7 @@ DEFAULT_FONT = os.path.join(BASE_DIR, "NotoSansDevanagari-Regular.ttf")
 def font_for_lang(lang: str) -> str:
     return FONT_MAP.get(lang, DEFAULT_FONT)
 
+
 # gTTS language codes mapped from your dropdown
 TTS_LANG_MAP = {
     "hi": "hi",  # Hindi
