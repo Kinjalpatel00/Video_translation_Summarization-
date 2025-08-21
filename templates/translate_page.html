@@ -1,0 +1,89 @@
+{% include 'header.html' %}
+{% include 'sidebar.html' %}
+{% include 'topbar.html' %}
+
+<main class="col-lg-12">
+  <div class="content">
+    <div class="container-fluid py-4">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-gradient-info text-white">
+              <h5 class="mb-0">Upload File for Translation</h5>
+            </div>
+            <div class="card-body">
+              <form id="uploadForm" action="{{ url_for('translate_page') }}" method="post"
+                enctype="multipart/form-data">
+
+                <!-- Choose upload type -->
+                <div class="mb-3">
+                  <label for="upload_type" class="form-label">Select Upload Type</label>
+                  <select id="upload_type" name="upload_type" class="form-select" onchange="toggleUpload()">
+                    <option value="">-- Select --</option>
+                    <option value="document">Document (PDF)</option>
+                    <option value="video">Video</option>
+                  </select>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="mb-3" id="document_upload" style="display:none;">
+                  <label for="document_file" class="form-label">Upload Document (PDF)</label>
+                  <input type="file" class="form-control" id="document_file" name="document_file" accept=".pdf">
+                </div>
+
+                <!-- Video Upload -->
+                <div class="mb-3" id="video_upload" style="display:none;">
+                  <label for="video_file" class="form-label">Upload Video</label>
+                  <input type="file" class="form-control" id="video_file" name="video_file" accept="video/*">
+                </div>
+
+                <!-- Language selection -->
+                <div class="mb-3">
+                  <label for="language" class="form-label">Select Language</label>
+                  <select id="language" name="language" class="form-select">
+                    <option value="hi">Hindi</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="mr">Marathi</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="bn">Bengali</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Translate &amp; View</button>
+              </form>
+
+              <script>
+                function toggleUpload() {
+                  let type = document.getElementById("upload_type").value;
+                  document.getElementById("document_upload").style.display = (type === "document") ? "block" : "none";
+                  document.getElementById("video_upload").style.display = (type === "video") ? "block" : "none";
+                }
+              </script>
+
+
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div class="alert alert-info mt-3" role="alert">
+                <ul class="mb-0">
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% include 'footer.html' %}

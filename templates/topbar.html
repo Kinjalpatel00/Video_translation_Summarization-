@@ -1,0 +1,14 @@
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <div class="mt-2 text-m text-center">
+            <!-- 👤 Show username if user is logged in -->
+            {% if session.get("username") %}
+                <span class="me-3 text-dark">Welcome, {{ session["username"] }}!</span>
+            {% endif %}
+            <a class="text_color" href="{{ url_for('logout') }}">
+              <i class="material-icons text-dark opacity-10">exit_to_app</i>
+
+            </a>
+        </div>
+    </li>
+</ul>
