@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nucleo-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/material-dashboard.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link id="pagestyle" href="../static/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
+
+    <style>
+        /* Customize your additional styles here */
+        html,
+        body.login {
+            background: rgba(241, 242, 181, 1);
+            background: #c8dfff;
+            padding: 0.5em;
+            margin-left: 1em !important;
+            align-items: center !important;
+
+        }
+
+        .icon {
+            font-family: 'Material Icons';
+            font-size: 30px;
+            font-weight: 500;
+            /* You can adjust the size as needed */
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .register-container {
+            max-width: 784px;
+            margin: 10% auto 8%;
+            padding: 40px;
+            box-sizing: border-box;
+            background: rgba(57, 89, 116, 0.8);
+            position: relative;
+            /* padding-top: 80px; */
+            border-radius: 8px;
+        }
+
+        .login-container {
+            max-width: 426px;
+            margin: 10% auto 8%;
+            padding: 40px;
+            box-sizing: border-box;
+            background: rgba(57, 89, 116, 0.8);
+            position: relative;
+            /* padding-top: 80px; */
+            border-radius: 8px;
+        }
+
+        .text_color {
+            color: #0a58ca;
+        }
+
+        /* .login-form {
+            margin-top: 20px;
+        } */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            background-color: rgb(217 234 255 / 75%);
+            border: 1px solid #4a525f;
+            color: #000000;
+            /* border-left: 4px solid #93a5ab; */
+            height: 52px;
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 0;
+        }
+
+        /* .form-control:focus {
+            border-left: 4px solid #ccd8da;
+        } */
+
+        .btn-success {
+            background-image: none;
+            padding: 16px 154px;
+            /* border-radius: 0;
+            border: 2px solid #93a5ab; */
+            -webkit-transition: all ease 0.8s;
+            -moz-transition: all ease 0.8s;
+            transition: all ease 0.8s;
+            color: #fff;
+        }
+
+        /* .btn-info {
+            background-image: none;
+            padding: 16px 139px; */
+            /* border-radius: 0;
+            border: 2px solid #93a5ab; */
+            /* -webkit-transition: all ease 0.8s;
+            -moz-transition: all ease 0.8s;
+            transition: all ease 0.8s;
+            color: #fff;
+        } */
+
+        .btn-success:focus,
+        .btn-success:hover,
+        .btn-success.active,
+        .btn-success:active {
+            /* background-color: transparent; */
+            border-color: #fff;
+            /* box-shadow: inset 0 0 100px 0 #7692A7; */
+            color: #fff;
+        }
+
+        .btn-primary,
+        .btn.bg-gradient-primary {
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .sidenav {
+                position: absolute;
+                /* Or fixed, based on your design */
+                width: 100%;
+                /* Full width on small screens */
+            }
+
+            .content {
+                padding-left: 0;
+                /* Remove left padding */
+            }
+        }
+
+
+        .checkbox label,
+        .checkbox a {
+            color: #ddd;
+        }
+
+        .margin_icon {
+            margin-top: -2.6em;
+            margin-left: 12em;
+        }
+
+        .form-switch .form-check-input:checked {
+            border-color: #389df0;
+            background-color: #389df0;
+        }
+
+        .logo {
+            text-align: center;
+            position: absolute;
+            top: -42px;
+            /* margin: 0 auto; */
+            width: 28%;
+            left: 37.5%;
+            border-radius: 54%;
+            background-color: #344455;
+            padding: 18px;
+            /* box-shadow: 0px 0px 9px 2px #344454; */
+        }
+
+        .logo .fa {
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .welcome {
+            margin: 0 0 20px 0;
+            font-size: 25px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .checkbox.pull-left {
+            float: left;
+        }
+
+        .checkbox.pull-right {
+            float: right;
+        }
+
+        .checkbox label {
+            margin-left: 6px;
+        }
+
+        .checkbox.pull-left,
+        .checkbox.pull-right {
+            margin-top: 6px;
+        }
+
+        .forgot-btn {
+            text-align: right;
+            margin-top: -38px;
+            margin-right: -2px;
+        }
+
+        .forgot-btn a {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-weight: 400;
+            cursor: pointer;
+            font-size: 14px !important;
+            color: white;
+        }
+
+        .nav-link-text {
+            font-weight: 500;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 96%;
+            width: 236px;
+            position: absolute;
+            top: 17px;
+            left: 15px;
+            background-color: #454545;
+            padding-top: 20px;
+            border-radius: 1.5em;
+        }
+
+        /* Sidebar header */
+        .sidebar h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar links */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        /* Content area */
+        .content {
+            margin-left: 260px;
+            /* Same as the width of the sidebar */
+            padding: 20px;
+        }
+
+        .content h1 {
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+        }
+
+        .submit_btn {
+            padding: 10px 34px;
+            /* margin-top: 15px; */
+        }
+
+        .fa_icon {
+            font-size: 1.1em !important;
+            letter-spacing: 0.5em;
+
+        }
+
+        /* Global Background */
+        body {
+            background: #f8f9fa;
+            /* light gray background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Card Header */
+        /* .card-header {
+            background: linear-gradient(135deg, #1e88e5, #42a5f5);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 1rem 1.5rem;
+        } */
+
+        /* Card Header Title */
+        .card-header h5 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Form Elements */
+        .form-label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            /* transition: border-color 0.3s ease, box-shadow 0.3s ease; */
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #1e88e5;
+            box-shadow: none;
+        }
+
+        /* Submit Button */
+        .btn-primary {
+            background: #1e88e5;
+            border: none;
+            border-radius: 5px;
+            /* padding: 0.5rem 1.5rem; */
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1565c0;
+        }
+
+        /* Alerts */
+        .alert {
+            border-radius: 5px;
+            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .card {
+                margin: 1rem;
+            }
+        }
+
+
+
+
+        .navbar-vertical .navbar-nav>.nav-item .nav-link.active {
+            color: #fff;
+            border-right-width: 0;
+            border-bottom-width: 0;
+            background-color: rgb(200 223 255);
+        }
+
+        .sidenav .collapse .nav-item .nav-link.active {
+            color: #000000 !important;
+        }
+
+        .navbar-vertical .navbar-nav .nav-link {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            font-weight: 300;
+            color: #000000;
+        }
+
+        .sidenav .collapse .nav-item .nav-link.active i {
+            color: #000000 !important;
+        }
+    </style>
+</head>
+
+<body class="login">

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/material-dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Uploaded Video</h2>
+        <video width="100%" controls>
+            <source src="{{ url_for('view_video', filename=filename) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <a href="{{ url_for('upload_file') }}" class="btn btn-primary">Back to Upload</a>
+    </div>
+</body>
+</html>
